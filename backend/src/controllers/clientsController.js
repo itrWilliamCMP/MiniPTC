@@ -1,30 +1,26 @@
 const clientsController = {};
 import clientsModel from "../models/Clients.js";
 
-// Select (GET)
 clientsController.getClients = async (req, res) => {
     const clients = await clientsModel.find();
     res.json(clients);
 };
 
-// Insert (POST)
 clientsController.createClient = async (req, res) => {
-    const { name, lastName, birthday, email, password, telephone, dui, isVerified } = req.body;
-    const newClient = new clientsModel({ name, lastName, birthday, email, password, telephone, dui, isVerified });
+    const { Name, Age, PhoneNumber, Email, Address, Dui } = req.body;
+    const newClient = new clientsModel({ Name, Age, PhoneNumber, Email, Address, Dui });
     await newClient.save();
     res.json({ message: "Client saved" });
 };
 
-// Delete (DELETE)
 clientsController.deleteClient = async (req, res) => {
     await clientsModel.findByIdAndDelete(req.params.id);
     res.json({ message: "Client deleted" });
 };
 
-// Update (PUT)
 clientsController.updateClient = async (req, res) => {
-    const { name, lastName, birthday, email, password, telephone, dui, isVerified } = req.body;
-    await clientsModel.findByIdAndUpdate(req.params.id, { name, lastName, birthday, email, password, telephone, dui, isVerified }, { new: true });
+    const { Name, Age, PhoneNumber, Email, Address, Dui } = req.body;
+    await clientsModel.findByIdAndUpdate(req.params.id, { Name, Age, PhoneNumber, Email, Address, Dui }, { new: true });
     res.json({ message: "Client updated" });
 };
 

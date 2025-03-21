@@ -3,14 +3,28 @@ import Products from "../models/Products.js";
 
 // Obtener productos
 productsController.getProducts = async (req, res) => {
-    const products = await Products.find();
+    const products = await Products.find()
+        .populate('Mark_id')
+        .populate('Model_id')
+        .populate('Suppliers_id');
     res.json(products);
 };
 
 // Insertar producto
 productsController.createProducts = async (req, res) => {
-    const { name, descripcion, price, stock } = req.body;
-    const newProduct = new Products({ name, descripcion, price, stock });
+    const { Name, Description, Price, Stock, Year, Mark_id, Model_id, Suppliers_id } = req.body;
+    
+    const newProduct = new Products({ 
+        Name, 
+        Description, 
+        Price, 
+        Stock, 
+        Year, 
+        Mark_id, 
+        Model_id, 
+        Suppliers_id 
+    });
+    
     await newProduct.save();
     res.json({ message: "Product saved" });
 };
@@ -23,8 +37,17 @@ productsController.deleteProducts = async (req, res) => {
 
 // Actualizar producto
 productsController.updateProducts = async (req, res) => {
-    const { name, descripcion, price, stock } = req.body;
-    await Products.findByIdAndUpdate(req.params.id, { name, descripcion, price, stock }, { new: true });
+    const { Name, Description, Price, Stock, Year, Mark_id, Model_id, Suppliers_id } = req.body;
+    await Products.findByIdAndUpdate(req.params.id, { 
+        Name, 
+        Description, 
+        Price, 
+        Stock, 
+        Year, 
+        Mark_id, 
+        Model_id, 
+        Suppliers_id 
+    }, { new: true });
     res.json({ message: "Product updated" });
 };
 

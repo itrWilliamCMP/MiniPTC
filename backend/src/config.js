@@ -12,4 +12,16 @@ export const config ={
     server:{
         port: process.env.PORT || 4000,
     },
+    JWT: {
+        secret: process.env.JWT_SECRET,
+        expiresIn: process.env.JWT_EXPIRE,
+    },
+    ADMIN: {
+        secret: process.env.ADMIN_EMAIL,
+        password: process.env.ADMIN_PASSWORD
+    },
+    email: {
+        user: process.env.USER_EMAIL,
+        pass: process.env.USER_PASS
+    }
 };

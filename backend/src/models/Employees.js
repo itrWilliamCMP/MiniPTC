@@ -29,6 +29,10 @@ const employeeSchema = new Schema({
     EntryDate: {
         type: Date,
         required: true
+    },
+    password: {
+        type: String,
+        required: true
     }
 
 }, { timestamps: true, strict: false });

@@ -9,8 +9,8 @@ employeesController.getEmployees = async (req, res) => {
 
 // Insert (POST)
 employeesController.createEmployee = async (req, res) => {
-    const { Name, Age, Dui, PhoneNumber, emailEmployees, Adress, EntryDate} = req.body;
-    const newEmployee = new employeesModel({ Name, Age, Dui, PhoneNumber, emailEmployees, Adress, EntryDate });
+    const { Name, Age, Dui, PhoneNumber, emailEmployees, Adress, EntryDate, password} = req.body;
+    const newEmployee = new employeesModel({ Name, Age, Dui, PhoneNumber, emailEmployees, Adress, EntryDate, password });
     await newEmployee.save();
     res.json({ message: "Employee saved" });
 };
@@ -23,8 +23,8 @@ employeesController.deleteEmployee = async (req, res) => {
 
 // Update (PUT)
 employeesController.updateEmployee = async (req, res) => {
-    const {Name, Age, Dui, PhoneNumber, emailEmployees, Adress, EntryDate} = req.body;
-    await employeesModel.findByIdAndUpdate(req.params.id, { Name, Age, Dui, PhoneNumber, emailEmployees, Adress, EntryDate }, { new: true });
+    const {Name, Age, Dui, PhoneNumber, emailEmployees, Adress, EntryDate, password} = req.body;
+    await employeesModel.findByIdAndUpdate(req.params.id, { Name, Age, Dui, PhoneNumber, emailEmployees, Adress, EntryDate, password }, { new: true });
     res.json({ message: "Employee updated" });
 };
 

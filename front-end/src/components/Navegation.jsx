@@ -28,6 +28,16 @@ const Navegation = () => {
                             Products
                         </a>
                     </li>
+                    <li>
+                        <a href="/cart" className="text-white hover:text-gray-300 hover:font-semibold hover:text-neon-500 transition-all duration-300">
+                            Cart
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/contact" className="text-white hover:text-gray-300 hover:font-semibold hover:text-neon-500 transition-all duration-300">
+                            Contact Us
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>

@@ -1,0 +1,74 @@
+/* Hereda el fondo oscuro y estilo general */
+.tienda-container {
+    padding: 2rem;
+    background-color: #111;
+    color: #fff;
+    min-height: 100vh;
+  }
+  
+  /* Título estilo neón */
+  .titulo-tienda {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff;
+  }
+  
+  /* Formulario contacto */
+  .formulario-contacto {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #0ff;
+  }
+  
+  .campo-formulario {
+    margin-bottom: 1.5rem;
+  }
+  
+  .campo-formulario label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #0ff;
+    font-weight: bold;
+  }
+  
+  .campo-formulario input,
+  .campo-formulario textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: 10px;
+    border: none;
+    background-color: #222;
+    color: #fff;
+    outline: none;
+    box-shadow: inset 0 0 5px #0ff;
+  }
+  
+  .campo-formulario input:focus,
+  .campo-formulario textarea:focus {
+    box-shadow: 0 0 10px #0ff;
+  }
+  
+  /* Botón neón */
+  .btn {
+    display: block;
+    width: 100%;
+    background-color: #0ff;
+    color: #111;
+    border: none;
+    border-radius: 10px;
+    padding: 0.7rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+  }
+  
+  .btn:hover {
+    background-color: #00e0e0;
+    transform: scale(1.05);
+  }
+  

@@ -1,0 +1,66 @@
+.tienda-container {
+    background-color: #1a1a1a;
+    padding: 40px;
+    min-height: 100vh;
+    color: white;
+    text-align: center;
+  }
+  
+  .titulo-tienda {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #4ade80;
+  }
+  
+  .productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-items: center;
+  }
+  
+  .producto-card {
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 255, 128, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .producto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 255, 128, 0.5);
+  }
+  
+  .producto-img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 12px;
+    margin-bottom: 15px;
+  }
+  
+  .btn {
+    background-color: #ef4444; /* rojo */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #dc2626;
+  }
+  
+  .total-section {
+    margin-top: 40px;
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  

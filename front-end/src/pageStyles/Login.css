@@ -1,0 +1,93 @@
+/* Fondo oscuro general */
+.login-container {
+    background-color: #0d1117;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    color: #f1f5f9;
+  }
+  
+  .login-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #0ff;
+    text-shadow: 0 0 8px #0ff, 0 0 12px #0ff;
+  }
+  
+  /* Formulario */
+  form {
+    background-color: #161b22;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .input-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-group label {
+    margin-bottom: 0.5rem;
+    color: #94a3b8;
+    font-weight: 500;
+  }
+  
+  .input-group input {
+    padding: 0.75rem 1rem;
+    background-color: #0f172a;
+    border: 2px solid #1e293b;
+    border-radius: 8px;
+    color: #e2e8f0;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .input-group input:focus {
+    outline: none;
+    border-color: #0ff;
+    box-shadow: 0 0 10px #0ff;
+  }
+  
+  /* Botón */
+  .btn {
+    width: 100%;
+    background-color: #0ff;
+    color: #0f172a;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 10px #0ff;
+  }
+  
+  .btn:hover {
+    background-color: #00e6e6;
+    box-shadow: 0 0 20px #00e6e6;
+  }
+  
+  /* Enlace de registro */
+  .login-container p {
+    margin-top: 1rem;
+    color: #94a3b8;
+    text-align: center;
+  }
+  
+  .login-container a {
+    color: #0ff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .login-container a:hover {
+    text-shadow: 0 0 6px #0ff;
+  }

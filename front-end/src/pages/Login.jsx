@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../pageStyles/Login.css';
 
 const Login = () => {
@@ -8,14 +9,18 @@ const Login = () => {
       <form>
         <div className="input-group">
           <label htmlFor="email">Correo electrónico</label>
-          <input type="email" id="email" placeholder="Introduce tu correo" />
+          <input type="email" id="email" placeholder="" required />
         </div>
         <div className="input-group">
           <label htmlFor="password">Contraseña</label>
-          <input type="password" id="password" placeholder="Introduce tu contraseña" />
+          <input type="password" id="password" placeholder="" required />
         </div>
         <button type="submit" className="btn">Iniciar sesión</button>
       </form>
+      <div className="login-options">
+        <Link to="/recuperar">¿Olvidaste tu contraseña?</Link>
+        <p>¿No tienes cuenta? <Link to="/register">Regístrate aquí</Link></p>
+      </div>
     </div>
   );
 };

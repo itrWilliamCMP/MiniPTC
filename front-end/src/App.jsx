@@ -8,6 +8,8 @@ import Register from './pages/Register'
 import Product from './pages/Product'
 import Cart from './pages/Cart'
 import Contact from './pages/Contact-us'
+import Recuperar from './pages/Recuperar'
+import Profile from './pages/Profile'
 
 import Navegation from './components/Navegation'
 
@@ -24,6 +26,8 @@ function App() {
           <Route path="/product" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/contact" element={<Contact/>}/>
+          <Route path="/recuperar" element={<Recuperar />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </Router>
     </>

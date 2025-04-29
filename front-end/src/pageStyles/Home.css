@@ -1,162 +1,193 @@
-/* Home.css */
-
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #000;
-    color: #fff;
-}
-
-/* Contenedor principal */
+/* Estilos generales para la página */
 .home-container {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: auto;
+    background-color: #121212;
+    color: #fff;
+    padding: 20px;
 }
 
-/* Título principal con logo */
-.header-title {
+/* Carrusel */
+.slick-slide {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 1rem;
+    align-items: center;
+    height: 500px; /* Alto fijo para asegurar que todas las diapositivas tengan el mismo tamaño */
+}
+
+/* Contenedor del carrusel */
+.carousel-container {
+    width: 100%;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Estilo para todas las diapositivas tipo bienvenida */
+.welcome-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    color: white;
+    padding: 50px 20px;
+    flex-direction: column;
+    height: 100%; /* Asegura que la diapositiva ocupe todo el alto disponible */
+    width: 100%; /* Asegura que la diapositiva ocupe todo el ancho */
+}
+
+/* Centrar el contenido del carrusel */
+.welcome-content {
     text-align: center;
-    margin-bottom: 3rem;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto; /* Centra el contenido en el contenedor */
 }
 
 .neon-title {
     font-size: 3rem;
-    color: #0ff;
-    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
 }
 
-/* Logo más pequeño y alineado a la derecha */
-.company-logo {
-    width: 80px; /* Tamaño más pequeño */
-    height: auto;
-    filter: drop-shadow(0 0 10px #0ff);
+.welcome-message {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #f7f7f7;
+    margin-bottom: 10px;
 }
 
-/* Bloques de contenido */
+.info-description {
+    font-size: 1.2rem;
+    color: #f1f1f1;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.slogan {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #ffcb00;
+    font-weight: bold;
+}
+
+/* Estilos para la sección de misión, visión, objetivos */
 .company-section {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+    padding: 50px 20px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    max-width: 1200px; /* Limita el ancho */
+    margin: 0 auto; /* Centra la sección */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px; /* Aumento el espacio entre los cuadros */
 }
 
+/* Cuadro principal con efecto neón */
 .company-block {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    align-items: flex-start;
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 2rem;
-    border-radius: 1rem;
-    border: 1px solid rgba(0, 255, 255, 0.3);
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    animation: fadeInUp 1s ease forwards;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.6); /* Efecto neón naranja */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #121212;
     opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s forwards;
 }
 
-/* Aparece con animación */
+/* Animación para que el contenido aparezca al hacer scroll */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* Hover */
-.company-block:hover {
-    transform: scale(1.02);
-    background-color: rgba(0, 255, 255, 0.05);
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
-}
-
-/* Contenido textual */
-.text-content {
-    flex: 2;
-    padding-right: 1rem;
-}
-
-/* Títulos internos */
+/* Títulos con neón naranja */
 .company-block h3 {
-    color: #0ff;
-    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
-    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    color: #ffcb00;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0 0 10px #ffcb00, 0 0 20px #ffcb00;
 }
 
-/* Listas */
-.company-block ul {
-    list-style-type: square;
-    padding-left: 1.5rem;
+/* Descripción y párrafos */
+.company-block p {
+    font-size: 1.2rem;
+    color: #f7f7f7;
     line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
 }
 
-/* Imágenes */
-.company-img {
-    flex: 1;
-    max-width: 250px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-    object-fit: cover;
-    transition: transform 0.3s ease;
+/* Efecto hover en los cuadros */
+.company-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.9); /* Aumenta el efecto neón */
 }
 
-.company-img:hover {
-    transform: scale(1.05);
+/* Estilo para la lista de objetivos */
+.company-block ul {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 1.1rem;
 }
 
-/* Estilos responsivos */
+.company-block ul li {
+    margin-bottom: 10px;
+    color: #f7f7f7;
+}
+
+/* Alternar la posición de los cuadros */
+.company-block.left {
+    grid-column: 1;
+}
+
+.company-block.right {
+    grid-column: 2;
+}
+
+/* Responsividad */
 @media (max-width: 768px) {
+    .company-section {
+        grid-template-columns: 1fr; /* En pantallas pequeñas, los bloques estarán en una columna */
+    }
     .neon-title {
-        font-size: 2.2rem;
-        flex-direction: column;
-        gap: 0.5rem;
+        font-size: 2.5rem;
     }
 
-    .home-container {
-        padding: 1rem;
+    .welcome-message {
+        font-size: 1.3rem;
     }
 
-    .company-block {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 1.5rem;
-    }
-
-    .text-content {
-        padding-right: 0;
-    }
-
-    .company-img {
-        width: 100%;
-        max-width: 100%;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+    .info-description {
+        font-size: 1.1rem;
     }
 }
 
 @media (max-width: 480px) {
+    .welcome-content {
+        padding: 10px;
+    }
+
     .neon-title {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
 
-    .company-block h3 {
-        font-size: 1.4rem;
+    .welcome-message {
+        font-size: 1.1rem;
     }
 
-    .company-block ul {
-        padding-left: 1rem;
-    }
-
-    .company-block {
-        padding: 1rem;
+    .info-description {
+        font-size: 1rem;
     }
 }

@@ -1,11 +1,14 @@
+// Objeto que contiene el controlador de logout
 const logoutController = {};
 
-logoutController.logout = async (req, res) =>{
-
+// Función para cerrar sesión
+logoutController.logout = async (req, res) => {
+    // Elimina la cookie de autenticación
     res.clearCookie("authToken");
 
-    return res.json({message: "Session closed"});
-
+    // Respuesta indicando que la sesión se cerró correctamente
+    return res.json({ message: "Session closed" });
 };
 
+// Exportación del controlador
 export default logoutController;

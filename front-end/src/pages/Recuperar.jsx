@@ -5,12 +5,22 @@ const Recuperar = () => {
   return (
     <div className="recuperar-container">
       <h2>Recuperar Contraseña</h2>
+      {/* Formulario para recuperar la contraseña */}
       <form>
+        {/* Campo de entrada para el correo electrónico */}
         <div className="input-group">
           <label htmlFor="email">Correo electrónico</label>
-          <input type="email" id="email" placeholder="Introduce tu correo" required />
+          <input
+            type="email" // Tipo de entrada para correo electrónico
+            id="email" // Identificador del campo
+            placeholder="Introduce tu correo" // Texto de sugerencia dentro del campo
+            required // Asegura que este campo sea obligatorio
+          />
         </div>
-        <button type="submit" className="btn">Enviar enlace de recuperación</button>
+        {/* Botón para enviar el enlace de recuperación */}
+        <button type="submit" className="btn">
+          Enviar enlace de recuperación
+        </button>
       </form>
     </div>
   );

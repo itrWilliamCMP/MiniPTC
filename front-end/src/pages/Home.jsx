@@ -1,26 +1,28 @@
 import React from 'react';
-import Slider from 'react-slick';
-import '../pageStyles/Home.css';
+import Slider from 'react-slick'; // Importa el componente de carrusel
+import '../pageStyles/Home.css'; // Importa los estilos personalizados para la página de inicio
 
-// Importar los estilos de slick-carousel
+// Importa los estilos necesarios para el carrusel de slick
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const Home = () => {
+  // Configuración del carrusel (slider)
   const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
+    dots: true, // Muestra indicadores (puntos) debajo del carrusel
+    infinite: true, // Permite que el carrusel sea infinito (ciclo)
+    speed: 500, // Velocidad de transición entre diapositivas (en milisegundos)
+    slidesToShow: 1, // Muestra una diapositiva a la vez
+    slidesToScroll: 1, // Desplaza una diapositiva por vez
+    autoplay: true, // Activa el modo de reproducción automática
+    autoplaySpeed: 3000, // Intervalo entre cada diapositiva (3 segundos)
   };
 
   return (
     <div className="home-container">
+      {/* Carrusel principal de bienvenida con 4 diapositivas */}
       <Slider {...settings}>
-        {/* Diapositiva 1: Bienvenida */}
+        {/* Diapositiva 1: Bienvenida principal */}
         <div className="welcome-slide">
           <div className="welcome-content">
             <h2 className="neon-title">PIXEL ON LINE</h2>
@@ -38,7 +40,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Diapositiva 2 */}
+        {/* Diapositiva 2: Tecnología que inspira */}
         <div className="welcome-slide">
           <div className="welcome-content">
             <h2 className="neon-title">TECNOLOGÍA QUE INSPIRA</h2>
@@ -55,7 +57,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Diapositiva 3 */}
+        {/* Diapositiva 3: Compacta y poderosa */}
         <div className="welcome-slide">
           <div className="welcome-content">
             <h2 className="neon-title">COMPACTA Y PODEROSA</h2>
@@ -72,7 +74,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Diapositiva 4 */}
+        {/* Diapositiva 4: Diseñadas para ti */}
         <div className="welcome-slide">
           <div className="welcome-content">
             <h2 className="neon-title">DISEÑADAS PARA TI</h2>
@@ -90,8 +92,9 @@ const Home = () => {
         </div>
       </Slider>
 
-      {/* Sección de Misión, Visión, Objetivos y Descripción */}
+      {/* Sección de información institucional de la empresa */}
       <section className="company-section">
+        {/* Bloque: Misión */}
         <div className="company-block left">
           <h3>Misión</h3>
           <p>
@@ -99,6 +102,7 @@ const Home = () => {
           </p>
         </div>
 
+        {/* Bloque: Visión */}
         <div className="company-block right">
           <h3>Visión</h3>
           <p>
@@ -106,6 +110,7 @@ const Home = () => {
           </p>
         </div>
 
+        {/* Bloque: Objetivos */}
         <div className="company-block left">
           <h3>Objetivos</h3>
           <ul>
@@ -116,6 +121,7 @@ const Home = () => {
           </ul>
         </div>
 
+        {/* Bloque: Descripción de la empresa */}
         <div className="company-block right">
           <h3>Descripción</h3>
           <p>

@@ -159,24 +159,14 @@
 /* Responsividad */
 @media (max-width: 768px) {
     .company-section {
-        grid-template-columns: 1fr; /* En pantallas pequeñas, los bloques estarán en una columna */
-    }
-    .neon-title {
-        font-size: 2.5rem;
-    }
-
-    .welcome-message {
-        font-size: 1.3rem;
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 30px 15px;
     }
 
-    .info-description {
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .welcome-content {
-        padding: 10px;
+    .company-block.left,
+    .company-block.right {
+        grid-column: auto;
     }
 
     .neon-title {
@@ -184,10 +174,113 @@
     }
 
     .welcome-message {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+        text-align: center;
     }
 
     .info-description {
         font-size: 1rem;
+        text-align: center;
+    }
+
+    .slogan {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    .slick-slide {
+        height: auto !important; /* Permitir altura automática */
+        flex-direction: column;
+        padding: 30px 0;
+    }
+
+    .carousel-container {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .welcome-slide {
+        height: auto !important;
+        padding: 30px 15px;
+        flex-direction: column;
+    }
+
+    .welcome-content {
+        max-width: 100%;
+        width: 100%;
+        padding: 0 10px;
     }
 }
+
+@media (max-width: 400px) {
+    .slick-slide {
+        height: auto !important;
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .carousel-container,
+    .carousel-slide,
+    .welcome-slide {
+        width: 100% !important;
+        min-width: 100% !important;
+        height: auto !important;
+        padding: 20px 10px;
+        box-sizing: border-box;
+    }
+
+
+    .welcome-content {
+        padding: 10px;
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .neon-title {
+        font-size: 1.3rem;
+        word-break: break-word;
+    }
+
+    .welcome-message,
+    .info-description,
+    .slogan {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .company-section {
+        padding: 20px 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .company-block {
+        padding: 15px;
+    }
+
+    .company-block h3 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .company-block p,
+    .company-block ul {
+        font-size: 0.95rem;
+        text-align: left;
+    }
+
+    /* Oculta flechas si es necesario */
+    .slick-prev,
+    .slick-next {
+        display: none !important;
+    }
+
+    /* Evita scroll horizontal */
+    body {
+        overflow-x: hidden;
+    }
+}
+
+

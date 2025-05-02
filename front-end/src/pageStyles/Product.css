@@ -12,8 +12,8 @@
 .titulo-tienda {
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: #ff7a00;
-  text-shadow: 0 0 10px #ff7a00, 0 0 20px #ff7a00;
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
   animation: neonPulseOrange 2s infinite alternate;
 }
 
@@ -28,10 +28,10 @@
 /* Estilos de cada tarjeta */
 .producto-card {
   background: #121212;
-  border: 2px solid #ff7a00;
+  border: 2px solid #00ffff;
   border-radius: 20px;
   padding: 1.5rem 1rem;
-  box-shadow: 0 0 15px #ff7a00;
+  box-shadow: 0 0 15px #00ffff;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   position: relative;
   overflow: hidden;

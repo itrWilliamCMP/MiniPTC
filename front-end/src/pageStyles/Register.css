@@ -119,8 +119,36 @@ h2 {
   }
 }
 
-@media (max-width: 600px) {
-  .btn-container {
-    grid-column: 1 / -1;
+@media (max-width: 400px) {
+  .registro-card {
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
+  }
+
+  h2 {
+    font-size: 2rem;
+    word-break: break-word;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .input-group input {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .btn-register {
+    font-size: 1rem;
+    padding: 0.7rem 1.5rem;
+    width: 100%;
+    max-width: none;
+  }
+
+  body {
+    overflow-x: hidden;
   }
 }
+

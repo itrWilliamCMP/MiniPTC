@@ -26,7 +26,7 @@ de sus clientes, destacándose por su compromiso, calidad y confianza.
 ## ⚙️ Estructura del Proyecto
 
 /Bakend
-/Frontend
+/front-end
 
 ## 🚀 Instalación y Ejecución
 
@@ -40,7 +40,7 @@ bash
 cd backend
 npm install
 
-cd ../frontend
+cd ../front-end
 npm install
 
 

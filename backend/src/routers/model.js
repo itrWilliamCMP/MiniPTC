@@ -1,18 +1,25 @@
+// Importa el módulo 'express' y crea un enrutador utilizando Router()
 import express from "express";
-import modellController from "../controllers/modellController.js";
-
-// Crear el router para manejar las rutas relacionadas con los modelos
 const router = express.Router();
 
-// Ruta principal: obtener todos los modelos o crear uno nuevo
+// Importa el controlador que contiene la lógica para manejar las rutas de "Modelos"
+import modelsController from "../controllers/modelsController.js";
+
+// Define las rutas para "/api/models" (ruta raíz)
+// GET => Obtener todos los modelos
+// POST => Crear un nuevo modelo
 router.route("/")
-    .get(modellController.getModell)          // Obtener todos los modelos
-    .post(modellController.createModell);     // Crear un nuevo modelo
+  .get(modelsController.getModels)        // Llama a la función getModels del controlador
+  .post(modelsController.createModels);   // Llama a la función createModels del controlador
 
-// Ruta con ID: actualizar o eliminar un modelo específico
+// Define las rutas para "/api/models/:id" (ruta con parámetro ID específico)
+// GET => Obtener un modelo por su ID
+// PUT => Actualizar un modelo por su ID
+// DELETE => Eliminar un modelo por su ID
 router.route("/:id")
-    .put(modellController.updateModell)       // Actualizar modelo por ID
-    .delete(modellController.deleteModell);   // Eliminar modelo por ID
+  .get(modelsController.getModel)         // Llama a la función getModel del controlador
+  .put(modelsController.updateModels)     // Llama a la función updateModels del controlador
+  .delete(modelsController.deleteModels); // Llama a la función deleteModels del controlador
 
-// Exportación del router para usarlo en la app principal
+// Exporta el enrutador para que pueda ser usado en el archivo principal del servidor (por ejemplo, en app.js)
 export default router;

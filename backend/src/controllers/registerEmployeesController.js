@@ -1,7 +1,7 @@
 import employeesModel from "../models/Employees.js"
 import bcryptjs from "bcryptjs"; //Encriptar
 import jsonwebtoken from "jsonwebtoken"; // Token
-import {config} from "../config.js";
+import {config} from "../../config.js";
 
 
 //Creamos una array de funciones

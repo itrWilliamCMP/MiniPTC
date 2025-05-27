@@ -1,46 +1,50 @@
-// Importo Express y las rutas
 import express from "express";
-import productsRouters from "./src/routers/products.js";
-import clientsRouters from "./src/routers/clients.js";
-import employeesRouters from "./src/routers/employees.js";
-import reviewRouters from "./src/routers/reviews.js";
-import markRouter from "./src/routers/mark.js";
-import modellRouters from "./src/routers/model.js";
-import suppliersRouters from "./src/routers/suppliers.js";
-import cartsRouter from "./src/routers/carts.js";
-import salesRouter from "./src/routers/sales.js";
-import registerEmployeesRouter from "./src/routers/registeremployees.js";
+import cors from "cors";
 import cookieParser from "cookie-parser";
-import loginRouters from "./src/routers/login.js";
-import logoutRoters from "./src/routers/logout.js";
-import registerClientsRouter from "./src/routers/registerClients.js";
-import recoveryPasswordRouter from "./src/routers/recoveryPassword.js";
+import dotenv from "dotenv";
 
-// Creo una constante que es igual a la librería que importé
+import productsRoutes from "./src/routers/products.js";
+import clientsRoutes from "./src/routers/clients.js";
+import employeesRoutes from "./src/routers/employees.js";
+import reviewsRoutes from "./src/routers/reviews.js";
+import marksRoutes from "./src/routers/mark.js";
+import modelsRoutes from "./src/routers/model.js";
+import suppliersRoutes from "./src/routers/suppliers.js";
+import cartsRoutes from "./src/routers/carts.js";
+import salesRoutes from "./src/routers/sales.js";
+import registerEmployeesRoutes from "./src/routers/registeremployees.js";
+import loginRoutes from "./src/routers/login.js";
+import logoutRoutes from "./src/routers/logout.js";
+import registerClientsRoutes from "./src/routers/registerClients.js";
+import recoveryPasswordRoutes from "./src/routers/recoveryPassword.js";
+
+dotenv.config();
+
 const app = express();
 
-// Permitir que acepte datos en formato JSON
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+
 app.use(express.json());
-//Que postman acepte cookies
 app.use(cookieParser());
 
-// Definir las rutas de las funciones que tendrá la página web
-app.use("/api/products", productsRouters);
-app.use("/api/clients", clientsRouters)
-app.use("/api/employees", employeesRouters);
-app.use("/api/reviews", reviewRouters);
-app.use("/api/mark", markRouter);
-app.use("/api/modell", modellRouters);
-app.use("/api/suppliers", suppliersRouters);
-app.use("/api/carts", cartsRouter);
-app.use("/api/sales", salesRouter);
-app.use("/api/registerEmployees", registerEmployeesRouter);
-app.use("/api/login", loginRouters);
-app.use("/api/logout", logoutRoters);
-app.use("/api/registerClients", registerClientsRouter);
-app.use("/api/recoveryPassword", recoveryPasswordRouter);
+app.use("/api/products", productsRoutes);
+app.use("/api/clients", clientsRoutes);
+app.use("/api/employees", employeesRoutes);
+app.use("/api/reviews", reviewsRoutes);
+app.use("/api/mark", marksRoutes);
+app.use("/api/models", modelsRoutes);
+app.use("/api/suppliers", suppliersRoutes);
+app.use("/api/carts", cartsRoutes);
+app.use("/api/sales", salesRoutes);
+app.use("/api/registerEmployees", registerEmployeesRoutes);
+app.use("/api/login", loginRoutes);
+app.use("/api/logout", logoutRoutes);
+app.use("/api/registerClients", registerClientsRoutes);
+app.use("/api/recoveryPassword", recoveryPasswordRoutes);
 
-// Exporto la constante para poder usar Express en otros archivos
 export default app;
-
-

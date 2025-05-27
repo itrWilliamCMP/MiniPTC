@@ -5,7 +5,7 @@ import ClientsModel from "../models/Clients.js";
 import EmployeesModel from "../models/Employees.js";
 
 import  {sendEmail, HTMLRecoveryEmail}  from "../utils/mailPasswordRecovery.js";
-import { config } from "../config.js";
+import { config } from "../../config.js";
 
 //1- Crear un array de funciones
 

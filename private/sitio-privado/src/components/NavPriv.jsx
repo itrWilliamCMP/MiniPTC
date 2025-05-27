@@ -37,6 +37,14 @@ const NavPriv = () => {
               : "hidden lg:flex"
           }`}
         >
+           <li>
+            <a
+              href="/models"
+              className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:opacity-80 transition duration-200"
+            >
+              Models
+            </a>
+          </li>
           <li>
             <a
               href="/"
@@ -85,6 +93,15 @@ const NavPriv = () => {
               Proveedores
             </a>
           </li>
+          <li>
+            <a
+              href="/mark"
+              className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:opacity-80 transition duration-200"
+            >
+              Marcas
+            </a>
+          </li>
+         
         </ul>
       </div>
     </nav>

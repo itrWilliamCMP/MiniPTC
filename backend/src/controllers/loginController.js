@@ -7,7 +7,7 @@ import bcrypt from "bcryptjs";
 import jsonwebtoken from "jsonwebtoken";
 
 // Configuración general (como claves secretas)
-import { config } from "../config.js";
+import { config } from "../../config.js";
 
 // Objeto que contiene el controlador de login
 const loginController = {};

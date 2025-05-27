@@ -8,6 +8,8 @@ import OrderManagement from './pages/Order-management'
 import CustomerManagement from './pages/Customer-management'
 import Messages from './pages/Messages'
 import Suppliers from './pages/Supplier'
+import Models from './pages/Models'
+import Mark from './pages/Mark'
 
 // Importación del componente de navegación principal
 import NavPriv from './components/NavPriv'
@@ -27,7 +29,9 @@ function App() {
           <Route path="/pedidos" element={<OrderManagement />} /> 
           <Route path="/clientes" element={<CustomerManagement />} /> 
           <Route path="/mensajes" element={<Messages />} />       
-          <Route path="/provedores" element={<Suppliers/>}/>   
+          <Route path="/provedores" element={<Suppliers/>}/>  
+          <Route path="/models" element={<Models />} /> 
+          <Route path="/mark" element={<Mark />} />
         </Routes>
       </Router>
     </>

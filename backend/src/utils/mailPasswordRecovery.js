@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import {config} from "../config.js";
+import {config} from "../../config.js";
 
 //Configurar el transporte, ¿Quien envia el correo?
 const transporter = nodemailer.createTransport({

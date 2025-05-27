@@ -1,75 +1,149 @@
-import React, { useEffect } from 'react';
-import '../StylePrivadoo/ProductMana.css';
+import React, { useEffect, useState } from "react";
+import RegisterProduct from "../components/Products/RegisterProduct";
+import ListProduct from "../components/Products/ListProduct";
+import toast, { Toaster } from "react-hot-toast";
+import "../StylePrivadoo/ProductMana.css";
 
 const ProductManagement = () => {
-  useEffect(() => {
-    const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap';
-    link.rel = 'stylesheet';
-    document.head.appendChild(link);
-  }, []);
+  const [activeTab, setActiveTab] = useState("list");
+  const API = "http://localhost:4000/api/products";
 
-  const products = [
-    { id: 1, nombre: 'Mini Impresora Térmica', marca: 'PrintFast', precio: 59.99, stock: 12 },
-    { id: 2, nombre: 'Etiquetadora Portátil', marca: 'LabelPro', precio: 45.50, stock: 25 },
-    { id: 3, nombre: 'Impresora de Recibos Bluetooth', marca: 'ReceiptTech', precio: 89.00, stock: 8 },
-    { id: 4, nombre: 'Impresora de Credenciales', marca: 'CardPrint', precio: 120.00, stock: 5 },
-    { id: 5, nombre: 'Impresora de Fotos Portátil', marca: 'PhotoSnap', precio: 75.00, stock: 15 },
-    { id: 6, nombre: 'Impresora Textil', marca: 'FabricPrint', precio: 299.00, stock: 3 },
-    { id: 7, nombre: 'Impresora 3D Mini', marca: 'BuildMaster', precio: 199.00, stock: 6 },
-    { id: 8, nombre: 'Impresora Láser Monocromo', marca: 'LaserJetPro', precio: 150.00, stock: 10 },
-    { id: 9, nombre: 'Impresora de Inyección a Color', marca: 'ColorPrintPlus', precio: 110.00, stock: 18 },
-    { id: 10, nombre: 'Impresora Multifunción', marca: 'MultiPrintMax', precio: 220.00, stock: 4 },
-    { id: 11, nombre: 'Impresora Térmica de Etiquetas', marca: 'LabelMaster', precio: 65.00, stock: 20 },
-  ];
+  const [id, setId] = useState("");
+  const [nombre, setNombre] = useState("");
+  const [marca, setMarca] = useState("");
+  const [precio, setPrecio] = useState("");
+  const [stock, setStock] = useState("");
+
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch products
+  useEffect(() => {
+    let mounted = true;
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(API);
+        const data = await res.json();
+        if (mounted) setProducts(data);
+      } catch (error) {
+        console.error(error);
+        toast.error("Error cargando productos");
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    };
+    fetchProducts();
+    return () => {
+      mounted = false;
+    };
+  }, [API]);
+
+  // Save new product
+  const saveProduct = async (e) => {
+    e.preventDefault();
+    const newProduct = { nombre, marca, precio: parseFloat(precio), stock: parseInt(stock) };
+
+    try {
+      const res = await fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newProduct),
+      });
+      if (!res.ok) throw new Error("Error en respuesta al crear producto");
+      toast.success("Producto registrado");
+      resetForm();
+      setActiveTab("list");
+    } catch (error) {
+      console.error(error);
+      toast.error("Error al registrar producto");
+    }
+  };
+
+  // Delete product
+  const deleteProduct = async (id) => {
+    try {
+      const res = await fetch(`${API}/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Error en respuesta al eliminar producto");
+      toast.success("Producto eliminado");
+    } catch (error) {
+      console.error(error);
+      toast.error("Error al eliminar producto");
+    }
+  };
+
+  // Update product form filling
+  const updateProduct = (data) => {
+    setId(data._id);
+    setNombre(data.nombre);
+    setMarca(data.marca);
+    setPrecio(data.precio);
+    setStock(data.stock);
+    setActiveTab("form");
+  };
+
+  // Edit product handler
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    const updatedProduct = { nombre, marca, precio: parseFloat(precio), stock: parseInt(stock) };
+
+    try {
+      const res = await fetch(`${API}/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedProduct),
+      });
+      if (!res.ok) throw new Error("Error en respuesta al actualizar producto");
+      toast.success("Producto actualizado");
+      resetForm();
+      setActiveTab("list");
+    } catch (error) {
+      console.error(error);
+      toast.error("Error al actualizar producto");
+    }
+  };
+
+  const resetForm = () => {
+    setId("");
+    setNombre("");
+    setMarca("");
+    setPrecio("");
+    setStock("");
+  };
 
   return (
-    <div className="product-management-container">
-      <h1 className="product-management-title">
-        Gestión de Productos
-      </h1>
-
-      {/* Botón para agregar nuevo producto */}
-      <div className="add-product-button-container">
-        <button className="add-product-button">
-          + Agregar Producto
-        </button>
+    <div className="product-management-root">
+      <div className="product-management-container">
+        <h1 className="product-management-title">Gestión de Productos</h1>
+        <div className="tab-buttons">
+          <button onClick={() => setActiveTab("list")}>Listado</button>
+          <button onClick={() => setActiveTab("form")}>{id ? "Editar Producto" : "Agregar Producto"}</button>
+        </div>
+        {activeTab === "list" && (
+          <ListProduct
+            products={products}
+            loading={loading}
+            deleteProduct={deleteProduct}
+            updateProduct={updateProduct}
+          />
+        )}
+        {activeTab === "form" && (
+          <RegisterProduct
+            nombre={nombre}
+            marca={marca}
+            precio={precio}
+            stock={stock}
+            setNombre={setNombre}
+            setMarca={setMarca}
+            setPrecio={setPrecio}
+            setStock={setStock}
+            saveProduct={saveProduct}
+            handleEdit={handleEdit}
+            id={id}
+          />
+        )}
       </div>
-
-      {/* Tabla de productos */}
-      <div className="product-table-container">
-        <table className="product-table">
-          <thead className="product-table-header">
-            <tr>
-              <th className="product-table-header-cell">#</th>
-              <th className="product-table-header-cell">Nombre</th>
-              <th className="product-table-header-cell">Marca</th>
-              <th className="product-table-header-cell">Precio</th>
-              <th className="product-table-header-cell">Stock</th>
-              <th className="product-table-header-cell">Acciones</th>
-            </tr>
-          </thead>
-          <tbody className="product-table-body">
-            {products.map((product) => (
-              <tr key={product.id} className="product-table-row">
-                <td className="product-table-cell">{product.id}</td>
-                <td className="product-table-cell">{product.nombre}</td>
-                <td className="product-table-cell">{product.marca}</td>
-                <td className="product-table-cell">${product.precio.toFixed(2)}</td>
-                <td className="product-table-cell">{product.stock}</td>
-                <td className="product-table-cell actions-cell">
-                  <button className="edit-button">
-                    Editar
-                  </button>
-                  <button className="delete-button">
-                    Eliminar
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <Toaster toastOptions={{ duration: 1000 }} />
     </div>
   );
 };

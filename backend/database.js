@@ -1,31 +1,32 @@
+// Imports
 import mongoose from "mongoose";
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
+import { config } from './config.js'
 
+// Cargar variables de entorno desde el archivo .env
 dotenv.config();
 
-import { config } from "./config.js";
+// Configurar la URI o dirección de la base de datos
+const URI = config.db.URI;
+
+// Conexión a la base de datos en MongoDB
+mongoose.connect(URI);
 
 
-//1- Conecto la base de datos
-
-mongoose.connect(config.db.URI);
-
-//------------------- Comprobar que todo funciona -------------------
-
-//2- Creo una constante que es igual a la conexion
+// En una constante guardo la conexión, que puede tener los valores (open, disconnected o error)
 const connection = mongoose.connection;
 
-//veo si funciona
+// Evento para cuando se conecte la base de datos
 connection.once("open", () => {
-    console.log("DB is connected");
+  console.log("Database is connected");
 });
 
-//veo si se desconecto
-connection.on("disconnected", () =>{
-    console.log("DB is disconnected");
+// Evento para detectar si se desconecta la base de datos
+connection.on("disconnected", () => {
+  console.log("Database is disconnected");
 });
 
-//veo si hay error
-connection.on("error", (error) => {
-    console.log("error found" + error);
+// Evento para detectar errores en la conexión
+connection.on("error", (err) => {
+  console.error("Database connection error:", err);
 });

@@ -4,11 +4,11 @@ const RegisterSupplier = ({
   nombre,
   correo,
   telefono,
-  direccion,
+  pais,
   setNombre,
   setCorreo,
   setTelefono,
-  setDireccion,
+  setPais,
   saveSupplier,
   handleEdit,
   id,
@@ -36,12 +36,14 @@ const RegisterSupplier = ({
           placeholder="Teléfono"
           value={telefono}
           onChange={(e) => setTelefono(e.target.value)}
+          required
         />
         <input
           type="text"
-          placeholder="Dirección"
-          value={direccion}
-          onChange={(e) => setDireccion(e.target.value)}
+          placeholder="País"
+          value={pais}
+          onChange={(e) => setPais(e.target.value)}
+          required
         />
       </div>
       <div className="mt-4 text-center">

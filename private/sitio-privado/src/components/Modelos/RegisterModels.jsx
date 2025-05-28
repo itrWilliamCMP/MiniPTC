@@ -1,50 +1,52 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
 
-const RegisterModels = ({ onSubmit, editModel, onCancel }) => {
-  const [modelName, setModelName] = useState(editModel ? editModel.Model : '');
+const RegisterModels = ({ onSubmit, selectedModel, onCancel }) => {
+  const [modelName, setModelName] = useState('');
+
+  useEffect(() => {
+    if (selectedModel) {
+      setModelName(selectedModel.Model);
+    } else {
+      setModelName('');
+    }
+  }, [selectedModel]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!modelName.trim()) return;
-    onSubmit({ ...editModel, Model: modelName });
+    if (!modelName.trim()) {
+      toast.error('El nombre del modelo es obligatorio');
+      return;
+    }
+
+    const data = selectedModel
+      ? { ...selectedModel, Model: modelName }
+      : { Model: modelName };
+
+    onSubmit(data);
     setModelName('');
   };
 
   return (
-    <div className="product-management-container">
-      <h1 className="product-management-title">
-        {editModel ? 'Editar Modelo' : 'Registrar Modelo'}
-      </h1>
-
-      <form onSubmit={handleSubmit} className="product-table-container">
-        <div style={{ marginBottom: '1rem' }}>
-          <input
-            type="text"
-            placeholder="Nombre del modelo"
-            value={modelName}
-            onChange={(e) => setModelName(e.target.value)}
-            style={{
-              width: '100%',
-              padding: '0.75rem 1rem',
-              borderRadius: '0.5rem',
-              border: '1px solid #ccc',
-              fontSize: '1rem',
-            }}
-          />
-        </div>
-
-        <div className="actions-cell">
-          <button type="submit" className="edit-button">
-            {editModel ? 'Actualizar' : 'Guardar'}
+    <form onSubmit={handleSubmit} className="form-register">
+      <input
+        type="text"
+        placeholder="Nombre del modelo"
+        value={modelName}
+        onChange={(e) => setModelName(e.target.value)}
+        className="input-field"
+      />
+      <div className="form-actions">
+        <button type="submit" className="btn-add">
+          {selectedModel ? 'Actualizar' : 'Agregar Modelo'}
+        </button>
+        {selectedModel && (
+          <button type="button" className="btn-cancel" onClick={onCancel}>
+            Cancelar
           </button>
-          {editModel && (
-            <button type="button" onClick={onCancel} className="delete-button">
-              Cancelar
-            </button>
-          )}
-        </div>
-      </form>
-    </div>
+        )}
+      </div>
+    </form>
   );
 };
 

@@ -9,13 +9,17 @@ const ListSupplier = ({ suppliers, loading, deleteSupplier, updateSupplier }) =>
       <ul className="list-items">
         {suppliers.map((prov) => (
           <li key={prov._id} className="list-item">
-            <p className="provider-name">{prov.nombre}</p>
-            <p>📧 {prov.correo}</p>
-            <p>📞 {prov.telefono}</p>
-            <p>📍 {prov.direccion}</p>
+            <p className="provider-name">{prov.Name}</p>
+            <p>📧 {prov.EmailSuppliers}</p>
+            <p>📞 {prov.Phone}</p>
+            <p>📍 {prov.Country}</p>
             <div className="action-buttons">
-              <button onClick={() => updateSupplier(prov)} className="btn-edit">Editar</button>
-              <button onClick={() => deleteSupplier(prov._id)} className="btn-delete">Eliminar</button>
+              <button onClick={() => updateSupplier(prov)} className="btn-edit">
+                Editar
+              </button>
+              <button onClick={() => deleteSupplier(prov._id)} className="btn-delete">
+                Eliminar
+              </button>
             </div>
           </li>
         ))}

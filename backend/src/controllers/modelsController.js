@@ -1,5 +1,5 @@
 const modelsController = {};
-import modelsModel from "../models/Model.js";
+import modelsModel from "../models/Model.js"
 
 // READ: Selecciona todos los modelos
 modelsController.getModels = async (req, res) => {

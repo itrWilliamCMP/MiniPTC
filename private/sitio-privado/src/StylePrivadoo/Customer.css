@@ -1,254 +1,198 @@
-/* Container general */
-.customer-management-container {
-  width: 140%;
-  margin-top: 60px;
-  padding: 2rem 1rem 3rem;
-  font-family: 'Poppins', sans-serif;
-  color: #222;
-  background-color: #fff;
-  border-radius: 0;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  min-height: calc(100vh - 60px);
+/* Fuente y reset base */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+* {
   box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #121212;
+  font-family: 'Inter', sans-serif;
+  color: #e0e0e0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Contenedor general */
+.container-client {
+  max-width: 960px;
+  margin: 40px auto;
+  background: #1f1f1f;
+  border-radius: 12px;
+  padding: 30px 40px;
+  box-shadow: 0 0 30px rgba(50, 255, 120, 0.15);
+  border: 1px solid #2a2a2a;
 }
 
 /* Título principal */
-.customer-management-title {
-  font-size: 2.4rem;
-  font-weight: 700;
-  margin-bottom: 1.8rem;
+.title-client {
   text-align: center;
-  color: #4f46e5;
-  width: 100%;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #33ff77;
+  letter-spacing: 1.2px;
+  text-shadow: 0 0 8px #33ff77aa;
 }
 
-/* Contenedor filtro búsqueda */
-.search-filter-container {
+/* Lista vertical con separación */
+.list-clients {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  box-sizing: border-box;
+  flex-direction: column;
+  gap: 22px;
 }
 
-/* Input de búsqueda */
-.search-input {
-  flex: 1 1 300px;
-  padding: 0.7rem 1rem;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-  width: 100%;
-  box-sizing: border-box;
+/* Tarjeta de cliente */
+.client-card {
+  background: #2c2c2c;
+  border-radius: 14px;
+  padding: 20px 25px;
+  box-shadow: 0 0 12px rgba(50, 255, 120, 0.25);
+  border: 1.5px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.search-input:focus {
-  outline: none;
-  border-color: #4f46e5;
-  box-shadow: 0 0 8px rgba(79,70,229,0.3);
+/* Destacar la tarjeta al hacer hover */
+.client-card:hover {
+  border-color: #33ff77;
+  box-shadow: 0 0 20px #33ff77aa;
 }
 
-/* Botón buscar */
-.search-button {
-  background-color: #4f46e5;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.25s ease;
-  flex-shrink: 0;
+/* Texto en cliente */
+.client-card p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: #cfcfcf;
+  font-weight: 500;
+  letter-spacing: 0.03em;
 }
 
-.search-button:hover {
-  background-color: #4338ca;
-}
-
-/* Contenedor tabla */
-.customer-table-container {
-  overflow-x: auto;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* Tabla */
-.customer-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  min-width: 700px;
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-/* Cabecera tabla */
-.customer-table thead {
-  background: linear-gradient(90deg, #4f46e5, #6366f1);
-  color: white;
-}
-
-.table-header {
-  padding: 1rem 1.2rem;
-  text-align: left;
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-/* Filas */
-.customer-table tbody tr {
-  border-bottom: 1px solid #eaeaea;
-  transition: background-color 0.2s ease;
-  cursor: default;
-}
-
-.customer-table tbody tr:hover {
-  background-color: #f4f5fa;
-}
-
-/* Celdas */
-.table-data {
-  padding: 0.9rem 1.2rem;
-  font-size: 0.95rem;
-  color: #333;
-  vertical-align: middle;
-}
-
-/* Estado clientes */
-.status-span {
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: white;
+/* Negrita para etiquetas */
+.client-card p strong {
+  color: #33ff77;
+  font-weight: 700;
+  width: 110px;
   display: inline-block;
 }
 
-.active-status {
-  background-color: #10b981; /* verde */
-}
-
-.inactive-status {
-  background-color: #ef4444; /* rojo */
-}
-
-/* Acciones botones */
-.actions-cell {
-  display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  justify-content: flex-start; /* Align buttons to the start (left in LTR) */
-}
-
-.action-button {
-  padding: 0.45rem 0.9rem;
+/* Botones */
+.client-card button {
+  width: 120px;
+  padding: 8px 0;
+  margin-top: 12px;
+  font-weight: 600;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  font-weight: 600;
-  font-size: 0.85rem;
-  transition: background-color 0.25s ease, transform 0.15s ease;
+  transition: background-color 0.25s ease, box-shadow 0.3s ease;
   color: white;
-  min-width: 70px;
-  text-align: center;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
 }
 
-.action-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+/* Editar - verde */
+.btn-edit {
+  background-color: #33cc33;
+  box-shadow: 0 3px 8px #2db02daa;
 }
 
-.action-button:active {
-  transform: translateY(0);
-  box-shadow: none;
+.btn-edit:hover {
+  background-color: #27a127;
+  box-shadow: 0 4px 14px #27a127bb;
 }
 
-/* Botones específicos */
-.view-button {
-  background-color: #3b82f6; /* azul */
+/* Eliminar - rojo */
+.btn-delete {
+  background-color: #cc3333;
+  box-shadow: 0 3px 8px #b02d2daa;
+  margin-left: 10px;
 }
 
-.view-button:hover {
-  background-color: #2563eb;
+.btn-delete:hover {
+  background-color: #a12727;
+  box-shadow: 0 4px 14px #a12727bb;
 }
 
-.edit-button {
-  background-color: #f59e0b; /* amarillo */
+/* Cancelar - gris */
+.btn-cancel {
+  background-color: #777777;
+  box-shadow: 0 3px 6px #555555aa;
+  width: 110px;
+  margin-top: 10px;
 }
 
-.edit-button:hover {
-  background-color: #d97706;
+.btn-cancel:hover {
+  background-color: #5c5c5c;
+  box-shadow: 0 4px 10px #5c5c5cbb;
 }
 
-.deactivate-button {
-  background-color: #ef4444; /* rojo */
+/* Formulario */
+.form-client {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 12px;
+  justify-content: space-between;
 }
 
-.deactivate-button:hover {
-  background-color: #b91c1c;
+/* Inputs y select */
+.form-client input {
+  flex: 1 1 220px;
+  background: #1f1f1f;
+  border: 2px solid #3a3a3a;
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 1rem;
+  color: #e0e0e0;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 500;
 }
 
-/* Responsive */
+.form-client input::placeholder {
+  color: #7a7a7a;
+  font-weight: 400;
+}
 
-@media (max-width: 900px) {
-  .customer-management-container {
-    margin: 1rem;
-    padding: 1rem;
+.form-client input:focus {
+  outline: none;
+  border-color: #33ff77;
+  box-shadow: 0 0 10px #33ff77cc;
+}
+
+/* Botón guardar */
+.btn-save {
+  flex-basis: 100%;
+  max-width: 180px;
+  background-color: #33cc33;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px #27a127bb;
+  transition: background-color 0.3s ease, box-shadow 0.4s ease;
+  align-self: flex-end;
+  margin-top: 8px;
+}
+
+.btn-save:hover {
+  background-color: #27a127;
+  box-shadow: 0 6px 20px #27a127dd;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 600px) {
+  .form-client input {
+    flex: 1 1 100%;
   }
-
-  .search-filter-container {
-    flex-direction: column;
-  }
-
-  .search-button {
-    width: 100%;
-  }
-}
-
-@media (max-width: 700px) {
-  .customer-table {
-    min-width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .customer-table thead {
-    display: none;
-  }
-
-  .customer-table tbody tr {
-    display: block;
-    margin-bottom: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 0 8px rgba(79, 70, 229, 0.1);
-    padding: 1rem;
-    background: #fff;
-  }
-
-  .table-data {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 0;
-    font-size: 0.9rem;
-  }
-
-  .table-data::before {
-    content: attr(data-label);
-    font-weight: 700;
-    color: #555;
-  }
-
-  .actions-cell {
-    justify-content: center; /* Keep buttons centered on small screens */
-    margin-top: 1rem;
+  .btn-save {
+    max-width: 100%;
   }
 }

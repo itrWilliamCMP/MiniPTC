@@ -32,19 +32,22 @@ de sus clientes, destacándose por su compromiso, calidad y confianza.
 
 ### 1. Clonar el repositorio
 bash
-git clone https://github.com/itrWilliamCMP/MiniPTC.git
+https://github.com/kendricklopez1/Pixel_On_Line
 
 
 ### 2. Instalar dependencias (Frontend y Backend)
 bash
 cd backend
+cd frontend
 npm install
 
-cd ../front-end
-npm install
+cd /backend
+cd /front-end
+npm install a ambas carpetas
 
 
 ### 3. Ejecutar el proyecto
 bash
-# Desde /frontend
-npm run dev
+# Desde backend: Ejecutar node index.js, este si o si tiene que estar siempre ejecutandose
+
+# Desde frontend: Ejecutar npm run dev, igualmente tiene que estar ejecutandose
